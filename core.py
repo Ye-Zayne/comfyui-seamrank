@@ -165,7 +165,8 @@ def rank_candidates(previous: np.ndarray, candidates: Sequence[np.ndarray], *,
         seam_change = _pixel_change(p[-1], c[0])
         natural_high = max(float(np.percentile(pd, 90)), float(np.percentile(cd, 90)), 0.005)
         seam_excess = max(0.0, seam_change - natural_high * 1.75) / typical_change
-        pm = p.mean(axis=(1, 2)); cm = c.mean(axis=(1, 2))
+        pm = p.mean(axis=(1, 2))
+        cm = c.mean(axis=(1, 2))
         brightness_step = abs(float((cm[0] - pm[-1]) @ LUMA))
         internal_luma = np.concatenate([np.abs(np.diff(pm @ LUMA)), np.abs(np.diff(cm @ LUMA))])
         natural_luma = float(np.percentile(internal_luma, 90))
