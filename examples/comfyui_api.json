@@ -1,0 +1,22 @@
+{
+  "client_id": "seamrank-example",
+  "prompt": {
+    "1": {"class_type": "LoadImage", "inputs": {"image": "seamrank_previous.gif"}},
+    "2": {"class_type": "LoadImage", "inputs": {"image": "seamrank_bright.gif"}},
+    "3": {"class_type": "LoadImage", "inputs": {"image": "seamrank_good_overlap.gif"}},
+    "4": {
+      "class_type": "SeamRankCandidates",
+      "inputs": {
+        "previous": ["1", 0],
+        "candidate_1": ["2", 0],
+        "candidate_2": ["3", 0],
+        "fps": 25.0,
+        "analysis_frames": 12,
+        "max_trim": 12,
+        "duplicate_tolerance": 0.0001,
+        "motion_backend": "pixel_change"
+      }
+    },
+    "5": {"class_type": "SaveImage", "inputs": {"images": ["4", 3], "filename_prefix": "SeamRank/contact"}}
+  }
+}
