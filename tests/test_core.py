@@ -1,4 +1,4 @@
-import importlib
+import builtins
 
 import numpy as np
 import pytest
@@ -93,12 +93,12 @@ def test_four_candidates_include_every_score(seam_core, moving_frames):
 
 
 def test_missing_opencv_fallback_is_explicit(seam_core, moving_frames, monkeypatch):
-    original = importlib.import_module
+    original = builtins.__import__
     def without_opencv(name, *args, **kwargs):
         if name == "cv2":
             raise ImportError("not installed")
         return original(name, *args, **kwargs)
-    monkeypatch.setattr(seam_core.importlib, "import_module", without_opencv)
+    monkeypatch.setattr(builtins, "__import__", without_opencv)
     report = seam_core.rank_candidates(moving_frames(0), [moving_frames(8)], motion_backend="auto")
     assert report["motion_backend"] == "pixel_change"
     assert "unavailable" in report["motion_backend_note"]

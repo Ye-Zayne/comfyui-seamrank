@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "package_version": "0.1.0",
+  "package_version": "0.1.1",
   "fps": 25.0,
   "motion_backend": "pixel_change",
   "motion_backend_note": "Direction is unavailable; pixel change is not optical flow or physical speed.",

@@ -4,7 +4,7 @@
 
 Compare up to four continuation clips against the end of a previous clip. SeamRank ranks local seam evidence, shows the two frames on either side, and removes a confidently matching moving prefix from the selected continuation. It loads no generative model and works with standard ComfyUI `IMAGE` tensors from Wan, LTX, H3, VHS, or other workflows.
 
-Version: **0.1.0** · Python **3.10+** · ComfyUI V1 custom-node API.
+Version: **0.1.1** · Python **3.10+** · ComfyUI V1 custom-node API.
 
 ## Install
 

@@ -1,6 +1,6 @@
 [project]
 name = "comfyui-seamrank"
-version = "0.1.0"
+version = "0.1.1"
 description = "Rank multiple continuation clips by visual seam continuity and recommend duplicate-frame trims."
 readme = "README.md"
 requires-python = ">=3.10"

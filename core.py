@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import importlib
 import math
 from typing import Callable, Sequence
 
@@ -73,7 +72,7 @@ def _flow_backend(mode: str):
     if mode == "pixel_change":
         return None, "pixel_change", "Direction is unavailable; pixel change is not optical flow or physical speed."
     try:
-        cv2 = importlib.import_module("cv2")
+        import cv2
         if not callable(getattr(cv2, "calcOpticalFlowFarneback", None)):
             raise ImportError("cv2.calcOpticalFlowFarneback is unavailable")
         return cv2, "opencv_farneback", "Direction is measured only when the flow field has a coherent resultant."
@@ -220,7 +219,7 @@ def rank_candidates(previous: np.ndarray, candidates: Sequence[np.ndarray], *,
     results.sort(key=lambda item: (-item["score"], item["candidate_index"]))
     for position, result in enumerate(results, start=1):
         result["rank"] = position
-    return {"schema_version": 1, "package_version": "0.1.0", "fps": float(fps),
+    return {"schema_version": 1, "package_version": "0.1.1", "fps": float(fps),
             "motion_backend": backend, "motion_backend_note": backend_note,
             "analysis_frames": analysis_frames, "winner_index": results[0]["candidate_index"],
             "winner_trim_frames": results[0]["trim_frames"], "ranking": results,
